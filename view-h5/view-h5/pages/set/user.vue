@@ -9,13 +9,13 @@
 							<view>
 								<radio :checked="info[show_type[type].key] == '0'" value="0" color="#1AAD19"/>
 							</view>
-							<view>男</view>
+							<view>Nam</view>
 						</label>
 						<label class="uni-list-cell uni-list-cell-pd">
 							<view>
 								<radio :checked="info[show_type[type].key] == '1'" value="1" color="#1AAD19"/>
 							</view>
-							<view>女</view>
+							<view>Nữ</view>
 						</label>
 						
 					</radio-group>
@@ -43,15 +43,15 @@
 				type: '',
 				show_type: [
 					{
-						'title': '昵称',
+						'title': 'Biệt danh',
 						'key': 'nickname'
 					},
 					{
-						'title': '个性签名',
+						'title': 'Chữ ký cá nhân',
 						'key': 'doodling'
 					},
 					{
-						'title': '性别',
+						'title': 'Giới tính',
 						'key': 'sex'
 					},
 				],
@@ -70,7 +70,7 @@
 			_this.type = option.type;
 						
 			uni.setNavigationBarTitle({
-				title: (_this.show_type[_this.type].title + '设置'),
+				title: (_this.show_type[_this.type].title + ' - Cài đặt'),
 			});
 			
 			_this.info = _data.data('user_info');
@@ -89,7 +89,7 @@
 					data: { content: _this.info[_this.show_type[_this.type].key],type: _this.type, },
 					success(data) {
 						uni.showToast({
-							title: '保存成功',
+							title: 'Đã lưu',
 							duration: 2000
 						});
 						

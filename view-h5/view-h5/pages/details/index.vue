@@ -9,10 +9,10 @@
 					<view class="uni-media-list-detail" style="height: aotu;">
 						<view class="uni-media-list-text-top">{{my.nickname}} <image class="sex_type"  :src="'../../static/theme/default/details/' + my.sex + '.png'" :lazy-load="true"  /></view>
 						<view class="uni-media-list-info">
-						昵称: 	&nbsp;{{my.nickname}}
+						Biệt danh: 	&nbsp;{{my.nickname}}
 						</view>
 						<view class="uni-media-list-info">
-						账号:   &nbsp;隐藏
+						Tài khoản: &nbsp;Ẩn
 						</view>
 
 						<view class="uni-media-list-text-bottom uni-ellipsis"></view>
@@ -48,7 +48,7 @@
 			<view class="uni-list">
 				<view class="uni-list-cell" hover-class="none">
 					<view class="uni-list-cell-navigate uni-navigate-right friend_cricle">
-						<view class="cricle_title">朋友圈</view>
+						<view class="cricle_title">Khoảnh khắc</view>
 						<view class="uni-media-list-logo cricle_img" 
 						v-for="(img,img_index) in my.show_friend.circle" 
 						:key="img_index">
@@ -193,7 +193,7 @@
 			goMsg(list_id){
 				if(this.my.user_id == _data.data('user_info').id){
 					uni.showToast({
-						title: '不能给自己发消息',
+						title: 'Không thể nhắn tin cho chính mình',
 						duration: 2000,
 						icon: 'none',
 					});
@@ -217,7 +217,7 @@
 						data: { apply_id: _this.my.apply_id },
 						success(data) {
 							uni.showToast({
-								title: '已添加',
+								title: 'Đã thêm',
 								duration: 2000
 							});
 							/** 更新申请列表数据 */
@@ -270,7 +270,7 @@
 			}
 			if(!this.my.is_friend){
 				uni.showToast({
-					title: '对方不是好友,没有更多操作了',
+					title: 'Người này không phải bạn bè, không có thao tác nào khác',
 					duration: 1500,
 					icon:'none',
 				});

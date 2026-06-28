@@ -6,7 +6,7 @@
 				
 				<view class="uni-list-cell">
 					<view class="uni-media-list uni-list-cell-navigate uni-navigate-right">
-						<text>群头像</text>
+						<text>Ảnh nhóm</text>
 						<view class="uni-media-list-logo photo">
 							<image :src="photo(data.group.is_photo+'')" :lazy-load="true" style="border-radius: 10upx;" />
 						</view>
@@ -16,7 +16,7 @@
 				<view class="uni-list-cell">
 					<view class="uni-list-cell-navigate uni-navigate-right">
 						<view>
-							<text>群聊名称</text> 
+							<text>Tên nhóm chat</text> 
 							<view class="show_text">{{data.group.name}}</view>
 						</view>
 					</view>
@@ -25,7 +25,7 @@
 				<view class="uni-list-cell">
 					<view class="uni-list-cell-navigate uni-navigate-right">
 						<view>
-							<text>群公告</text> 
+							<text>Thông báo nhóm</text> 
 							<view class="show_text_">{{data.group.notice}}</view>
 						</view>
 					</view>
@@ -38,7 +38,7 @@
 		<view class="switch_class">
 			<view class="uni-list" style="background-color: #02B300; font-size: 53px; border-radius: 8px; width: 80%;margin: 0 auto;" >
 				<view class="uni-list-cell " style="text-align: center;">
-					<view class="uni-list-cell-db" style="font-size: 24px; text-align: center; color: #fff;" @tap="applyGroup">申请入群</view>
+					<view class="uni-list-cell-db" style="font-size: 24px; text-align: center; color: #fff;" @tap="applyGroup">Xin vào nhóm</view>
 				</view>
 			</view>
 		</view>

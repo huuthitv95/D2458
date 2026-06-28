@@ -10,7 +10,7 @@
 						</view>
 						<view class="uni-media-list-body">
 							<view class="uni-media-list-text-top">{{my_data.nickname}}</view>
-							<view class="uni-media-list-text-bottom uni-ellipsis">帐号: {{my_data.username}}</view>
+							<view class="uni-media-list-text-bottom uni-ellipsis">Tài khoản: {{my_data.username}}</view>
 						</view>
 						<view class="uni-media-list-logo qrcode">
 							<image src="/static/theme/default/my/qrcode.png" :lazy-load="true"/>
@@ -21,7 +21,7 @@
 		</view>
 		
 		<uni-list>
-			<uni-list-item title="朋友圈" 
+			<uni-list-item title="Khoảnh khắc" 
 						   :show-arrow="true"
 						   :show-badge="true"
 						   badge-type="error"
@@ -33,7 +33,7 @@
 		</uni-list>
 		
 		<uni-list v-if="0">
-			<uni-list-item title="支付"
+			<uni-list-item title="Thanh toán"
 						   :show-arrow="true"
 						   thumb="../../static/theme/default/my/pay.png"
 						   @click="goPath()"
@@ -42,25 +42,25 @@
 		</uni-list>
 		
 		<uni-list v-if="0">
-			<uni-list-item title="小程序" 
+			<uni-list-item title="Tiểu chương trình" 
 						   :show-arrow="true"
 						   thumb="../../static/theme/default/push/program.png"
 						   v-if="0"
 						   />
 						   
-			<uni-list-item title="相册" 
+			<uni-list-item title="Album" 
 						   :show-arrow="true"
 						   thumb="../../static/theme/default/my/images.png"
 						   @click="goPath()"
 						   v-if="0"
 						   />
-			<uni-list-item title="实名绑定" 
+			<uni-list-item title="Xác thực danh tính" 
 						   :show-arrow="true"
 						   thumb="../../static/theme/default/my/real.png"
 						   @click="goPath()"
 						   v-if="0"
 						   />
-			<uni-list-item title="表情" 
+			<uni-list-item title="Biểu cảm" 
 						   :show-arrow="true"
 						   thumb="../../static/theme/default/my/emoji.png"
 						   @click="goPath()"
@@ -69,13 +69,13 @@
 		</uni-list>
 		
 		<uni-list>
-			<uni-list-item title="我的收款二维码" 
+			<uni-list-item title="Mã QR nhận tiền" 
 						   :show-arrow="true"
 						   thumb="../../static/theme/default/my/qrcode.png"
 						   @click="goPath()"
 						   v-if="0"
 						   />
-			<uni-list-item title="设置" 
+			<uni-list-item title="Cài đặt" 
 						   :show-arrow="true"
 						   thumb="../../static/theme/default/my/set.png"
 						   @click="goPath('../set/index')"
@@ -124,7 +124,7 @@
 				this.show_tips = num;
 			}
 			else if(_data.data('no_reader_circle')){
-				this.show_tips = '好友动态';
+				this.show_tips = 'Hoạt động bạn bè';
 			}
 			else {
 				this.show_tips = '';

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="tabr">
-			<view :class="{on:typeClass=='luck'}" @tap="switchType('luck')">拼手气红包</view><view :class="{on:typeClass=='normal'}"  @tap="switchType('normal')">普通红包</view>
+			<view :class="{on:typeClass=='luck'}" @tap="switchType('luck')">Lì xì may mắn</view><view :class="{on:typeClass=='normal'}"  @tap="switchType('normal')">Lì xì thường</view>
 			<view class="border" :class="typeClass"></view>
 		</view>
 		<view class="content" :class="typeClass">
@@ -11,7 +11,7 @@
 						红包个数
 					</view>
 					<view class="input">
-						<input type="number" v-model="number" placeholder="输入红包个数"  /> 个
+						<input type="number" v-model="number" placeholder="Nhập số lì xì"  /> 个
 					</view>
 				</view>
 				<view class="row">
@@ -19,7 +19,7 @@
 						总金额
 					</view>
 					<view class="input">
-						<input type="number" v-model="luckMoney" placeholder="输入金额" /> 元
+						<input type="number" v-model="luckMoney" placeholder="Nhập số tiền" /> 元
 					</view>
 				</view>
 				<view class="tis">
@@ -38,7 +38,7 @@
 						红包个数
 					</view>
 					<view class="input">
-						<input type="number" v-model="number" placeholder="输入红包个数" /> 个
+						<input type="number" v-model="number" placeholder="Nhập số lì xì" /> 个
 					</view>
 				</view>
 				<view class="row">
@@ -46,7 +46,7 @@
 						单个金额
 					</view>
 					<view class="input">
-						<input type="number" v-model="money" placeholder="输入金额" /> 元
+						<input type="number" v-model="money" placeholder="Nhập số tiền" /> 元
 					</view>
 				</view>
 				<view class="tis">

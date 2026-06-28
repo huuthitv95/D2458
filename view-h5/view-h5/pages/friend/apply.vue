@@ -1,6 +1,6 @@
 <template>
     <view>
-        <view class="uni-title uni-common-pl">你需要发送验证申请,等对方通过</view>
+        <view class="uni-title uni-common-pl">Bạn cần gửi yêu cầu xác minh, chờ đối phương chấp nhận</view>
         <view class="uni-textarea">
             <textarea auto-height v-model="content" />
         </view>

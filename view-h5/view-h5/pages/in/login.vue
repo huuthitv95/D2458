@@ -48,16 +48,16 @@
 			<!--  <view :class="['landing',checkIn ? 'landing_true' : 'landing_false']" @tap="subLongin">登 陆</view> -->
 		</view>
 		<view class="login-function-old">
-			<!-- <view class="login-forget" @click="go_forget">忘记密码</view> -->
+			<!-- <view class="login-forget" @click="go_forget">Quên mật khẩu</view> -->
 			<view class="login-register" @click="go_register">{{$t('auth.register_link')}}</view>
 		</view>
 		<!--
 		<view>
 			<view class="login-function">
 				
-					<text class="textspace" @click="go_forget">找回密码</text> |
-				    <text class="textspace" @click="go_frozen">紧急冻结</text> |
-					<text class="textspace" @click="go_register">快速注册</text>
+					<text class="textspace" @click="go_forget">Lấy lại mật khẩu</text> |
+				    <text class="textspace" @click="go_frozen">Khóa khẩn cấp</text> |
+					<text class="textspace" @click="go_register">Đăng ký nhanh</text>
 				  
 			
 			</view>

@@ -88,7 +88,7 @@
 						switch (res.tapIndex){
 							case 0:
 								uni.showModal({
-									title: '提示',
+									title: 'Thông báo',
 									content: '确定删除这条好友申请记录吗？',
 									success: function (res) {
 										if (res.confirm) {

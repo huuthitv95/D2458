@@ -3,11 +3,11 @@
 		<view class="header">
 			<view class="input-view">
 				<uni-icon type="search" size="22" color="#666666"></uni-icon>
-				<input class="input" type="text" placeholder="输入要搜索的联系人" @input="handleInput" :focus="true" />
+				<input class="input" type="text" placeholder="Nhập tên liên lạc cần tìm" @input="handleInput" :focus="true" />
 			</view>
 		</view>
 		<view class="search-main" v-if="keyword">
-			<view class="search-main-errtitle" v-if="hasNoData">无搜索结果</view>
+			<view class="search-main-errtitle" v-if="hasNoData">Không tìm thấy kết quả</view>
 			<view class="uni-list">
 				<view class="uni-list-cell" hover-class="none" v-for="(item,index) of list" @tap="goDetails(item.user_id)" :key="index">
 					<view class="uni-media-list">

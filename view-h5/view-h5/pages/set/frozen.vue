@@ -6,7 +6,7 @@
 					<image class="uni-media-loading" src="/static/theme/default/frone.png" />
 				</view>
 				<view class="frozen-head">&nbsp;&nbsp;</view>
-				<view class="frozen-head">发现相遇帐号被盗或手机丢失，你可以冻结相遇号</view>
+				<view class="frozen-head">Nếu phát hiện tài khoản bị đánh cắp hoặc điện thoại bị mất, bạn có thể đóng băng tài khoản</view>
 				<view class="frozen-function">
 					
 						<text>防止坏人窃取你的个人隐私
@@ -19,7 +19,7 @@
 				</view>
 			</view>
 			<view class="frozen-btn">
-				<button type="primary" :class="['landing', 'landing_true' ]" @tap="subLongin">开始冻结</button> 
+				<button type="primary" :class="['landing', 'landing_true' ]" @tap="subLongin">Bắt đầu đóng băng</button> 
 				<!--  <view :class="['landing',checkIn ? 'landing_true' : 'landing_false']" @tap="subLongin">登 陆</view> -->
 			</view>
 		

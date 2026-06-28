@@ -83,7 +83,7 @@
 		methods: {
 			publish(){
 				if (!this.input_content) {
-					uni.showModal({ content: '内容不能为空', showCancel: false, });
+					uni.showModal({ content: 'Nội dung không được để trống', showCancel: false, });
 					return;
 				}
 				if(this.send_status){

@@ -4,7 +4,7 @@
 		<view class="uni-list">
 			<view class="uni-list-cell" @tap="goSet('3')">
 				<view class="uni-media-list uni-list-cell-navigate uni-navigate-right">
-					<text>头像</text>
+					<text>Ảnh đại diện</text>
 					<view class="uni-media-list-logo photo">
 						<image :src="myPhoto" :lazy-load="true" style="border-radius: 10upx;"/>
 					</view>
@@ -18,7 +18,7 @@
 				<view class="uni-list-cell" @tap="goSet('0')">
 					<view class="uni-list-cell-navigate uni-navigate-right">
 						<view>
-							<text>昵称</text> 
+							<text>Biệt danh</text> 
 							<view class="show_text">{{info.nickname}}</view>
 						</view>
 					</view>
@@ -27,7 +27,7 @@
 				<view class="uni-list-cell">
 					<view class="uni-list-cell-navigate">
 						<view>
-							<text>账号</text>
+							<text>Tài khoản</text>
 							<view class="show_text">{{info.username}}</view>
 						</view>
 					</view>
@@ -36,7 +36,7 @@
 				<view class="uni-list-cell" @tap="goSet('1')">
 					<view class="uni-list-cell-navigate uni-navigate-right">
 						<view>
-							<text>个性签名</text> 
+							<text>Chữ ký cá nhân</text> 
 							<view class="show_text">{{info.doodling}}</view>
 						</view>
 					</view>
@@ -44,7 +44,7 @@
 				
 				<view class="uni-list-cell" @tap="goSet('4')">
 					<view class="uni-media-list uni-list-cell-navigate uni-navigate-right">
-						<text>我的二维码</text>
+						<text>Mã QR của tôi</text>
 						<view class="uni-media-list-logo photo_qrcode">
 							<image src="/static/theme/default/my/qrcode.png" :lazy-load="true"/>
 						</view>
@@ -54,7 +54,7 @@
 				<view class="uni-list-cell" @tap="goSet('2')">
 					<view class="uni-list-cell-navigate uni-navigate-right">
 						<view>
-							<text>性别</text> 
+							<text>Giới tính</text> 
 							<view class="show_text">{{[ '男','女' ][info.sex]}}</view>
 						</view>
 					</view>
@@ -63,7 +63,7 @@
 				<view class="uni-list-cell" v-if="0">
 					<view class="uni-list-cell-navigate uni-navigate-right">
 						<view>
-							<text>更多</text>
+							<text>Thêm</text>
 						</view>
 					</view>
 				</view>

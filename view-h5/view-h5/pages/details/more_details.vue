@@ -16,15 +16,15 @@
 		<view class="switch_class" style="margin-top: 20upx;" v-if="0">
 			<view class="uni-list">
 				<view class="uni-list-cell uni-list-cell-pd">
-					<view class="uni-list-cell-db">置顶聊天</view>
+					<view class="uni-list-cell-db">Ghim cuộc trò chuyện</view>
 					<switch color="#02b300" :checked="false" />
 				</view>
 				<view class="uni-list-cell uni-list-cell-pd" v-if="0">
-					<view class="uni-list-cell-db">消息免打扰</view>
+					<view class="uni-list-cell-db">Tắt thông báo</view>
 					<switch color="#02b300" />
 				</view>
 				<view class="uni-list-cell uni-list-cell-pd" v-if="0">
-					<view class="uni-list-cell-db">强提醒</view>
+					<view class="uni-list-cell-db">Nhắc quan trọng</view>
 					<switch color="#02b300"/>
 				</view>
 			</view>
@@ -68,7 +68,7 @@
 			goDelete(){
 				let _this = this;
 				uni.showModal({
-					title: '重要提示',
+					title: 'Cảnh báo quan trọng',
 					content: '删除好友及相关的会话数据并且不能恢复，确认删除吗？',
 					success: function (res) {
 						if (res.confirm) {
@@ -77,7 +77,7 @@
 								data: { user_id: _this.user_id },
 								success(list_id) {
 									uni.showToast({
-										title: '操作成功',
+										title: 'Thao tác thành công',
 										duration: 1500
 									});
 									

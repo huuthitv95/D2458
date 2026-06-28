@@ -2,7 +2,7 @@
 	<view class="page">
 		
 		<view class="title">
-			<view class="title_val">会话成员</view>
+			<view class="title_val">Thành viên nhóm</view>
 			<view class="title_num">共{{data.member.length}}人 ></view>
 		</view>
 		
@@ -17,11 +17,11 @@
 			</view>
 			<view class="photo_main" @tap="add">
 				<image class="photo" :src="'../../../static/theme/default/chat/add.png'" :lazy-load="true"/>
-				<view class="name_class">邀 请</view>
+				<view class="name_class">Mời</view>
 			</view>
 			<view class="photo_main" @tap="reduce" v-if="data.is_action">
 				<image class="photo" :src="'../../../static/theme/default/chat/reduce.png'" :lazy-load="true"/>
-				<view class="name_class">移 除</view>
+				<view class="name_class">Xóa</view>
 			</view>
 		</view>		
 		
@@ -30,7 +30,7 @@
 				
 				<view class="uni-list-cell" @tap="goSetGroupPhoto">
 					<view class="uni-media-list uni-list-cell-navigate uni-navigate-right">
-						<text>群头像</text>
+						<text>Ảnh nhóm</text>
 						<view class="uni-media-list-logo photo">
 							<image :src="photo(data.group.is_photo+'')" :lazy-load="true" style="border-radius: 10upx;" />
 						</view>
@@ -40,7 +40,7 @@
 				<view class="uni-list-cell" @tap="goSet('name')">
 					<view class="uni-list-cell-navigate uni-navigate-right">
 						<view>
-							<text>群聊名称</text> 
+							<text>Tên nhóm chat</text> 
 							<view class="show_text">{{data.group.name}}</view>
 						</view>
 					</view>
@@ -49,7 +49,7 @@
 				<view class="uni-list-cell" @tap="goSet('notice')">
 					<view class="uni-list-cell-navigate uni-navigate-right">
 						<view>
-							<text>群公告</text> 
+							<text>Thông báo nhóm</text> 
 							<view class="show_text_">{{data.group.notice}}</view>
 						</view>
 					</view>
@@ -57,7 +57,7 @@
 				
 				<view class="uni-list-cell" @tap="goGroupQrcode">
 					<view class="uni-media-list uni-list-cell-navigate uni-navigate-right">
-						<text>群二维码</text>
+						<text>Mã QR nhóm</text>
 						<view class="uni-media-list-logo photo_qrcode">
 							<image src="/static/theme/default/my/qrcode.png" :lazy-load="true"/>
 						</view>
@@ -71,7 +71,7 @@
 					<view class="uni-list-cell" @tap="goSetAdmin(1)" v-if="isAction">
 						<view class="uni-list-cell-navigate uni-navigate-right">
 							<view>
-								<text>管理员设置</text> 
+								<text>Cài đặt quản trị viên</text> 
 								<view class="show_text_"></view>
 							</view>
 						</view>
@@ -79,20 +79,20 @@
 					<view class="uni-list-cell" @tap="goSetAdmin(2)">
 						<view class="uni-list-cell-navigate uni-navigate-right">
 							<view>
-								<text>禁言设置</text> 
+								<text>Cài đặt cấm chat</text> 
 								<view class="show_text_"></view>
 							</view>
 						</view>
 					</view>
 					<view class="uni-list-cell uni-list-cell-pd">
-						<view class="uni-list-cell-db">全体禁言(除群主和管理员)</view>
+						<view class="uni-list-cell-db">Cấm chat toàn nhóm (trừ chủ nhóm và quản trị viên)</view>
 						<switch color="#02b300" :checked="!!data.group.is_msg" @change="msgChange" />
 					</view>
 				</view>
 				<view class="uni-list-cell" @tap="removeGroup" v-if="isAction">
 					<view class="uni-list-cell-navigate">
 						<view>
-							<text style="color:red">解散该群</text> 
+							<text style="color:red">Giải tán nhóm</text> 
 							<view class="show_text_"></view>
 						</view>
 					</view>
@@ -104,15 +104,15 @@
 		<view class="switch_class">
 			<view class="uni-list">
 				<view class="uni-list-cell uni-list-cell-pd">
-					<view class="uni-list-cell-db">置顶聊天</view>
+					<view class="uni-list-cell-db">Ghim cuộc trò chuyện</view>
 					<switch color="#02b300" :checked="!!data.top" @change="msgTop" />
 				</view>
 				<view class="uni-list-cell uni-list-cell-pd" v-if="0">
-					<view class="uni-list-cell-db">消息免打扰</view>
+					<view class="uni-list-cell-db">Tắt thông báo</view>
 					<switch color="#02b300" />
 				</view>
 				<view class="uni-list-cell uni-list-cell-pd" v-if="0">
-					<view class="uni-list-cell-db">强提醒</view>
+					<view class="uni-list-cell-db">Nhắc quan trọng</view>
 					<switch color="#02b300"/>
 				</view>
 			</view>
@@ -185,10 +185,10 @@
 			removeGroup(){
 				let _this = this;
 				uni.showModal({
-					title: '重要提示',
-					content: '此操作数据不可恢复,确定要解散该群吗?',
-					confirmText: '不解散',
-					cancelText: '解散',
+					title: 'Cảnh báo quan trọng',
+					content: 'Hành động này không thể hoàn tác, bạn có chắc muốn giải tán nhóm?',
+					confirmText: 'Không giải tán',
+					cancelText: 'Giải tán',
 					confirmColor: '#353535',
 					cancelColor: 'red',
 					success: function (res) {
@@ -213,7 +213,7 @@
 				let value = e.detail.value ? 1 : 0;
 				if(!this.data.is_action && !this.isAction){
 					uni.showModal({
-						content: '没有权限设置',
+						content: 'Bạn không có quyền cài đặt',
 						showCancel: false,
 					});
 					return;
@@ -266,7 +266,7 @@
 			goSetGroupPhoto(){				
 				if(!this.data.is_action && !this.isAction){
 					uni.showToast({
-						title: '没有权限设置',
+						title: 'Bạn không có quyền cài đặt',
 						icon: 'none',
 						duration: 1000
 					});
@@ -282,7 +282,7 @@
 					case 1:
 						if(!this.isAction){
 							uni.showToast({
-								title: '群主才能设置',
+								title: 'Chỉ chủ nhóm mới được cài đặt',
 								icon: 'none',
 								duration: 1000
 							});
@@ -292,7 +292,7 @@
 					case 2:
 						if(!this.data.is_action && !this.isAction){
 							uni.showModal({
-								content: '没有权限设置',
+								content: 'Bạn không có quyền cài đặt',
 								showCancel: false,
 							});
 							return;
@@ -310,7 +310,7 @@
 			goSet(type){				
 				if(!this.data.is_action && !this.isAction){
 					uni.showToast({
-						title: '没有权限设置',
+						title: 'Bạn không có quyền cài đặt',
 						icon: 'none',
 						duration: 1000
 					});
@@ -324,7 +324,7 @@
 			goDetails(user_id){
 				if(this.data.type && !this.data.is_action && !this.isAction && user_id != _data.data('user_info').id){
 					uni.showToast({
-						title: '没有权限查看',
+						title: 'Bạn không có quyền xem',
 						icon: 'none',
 						duration: 1000
 					});

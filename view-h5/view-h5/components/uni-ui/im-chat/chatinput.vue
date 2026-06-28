@@ -7,7 +7,7 @@
 			<input class="input-text" type="text" v-model="inputValue"></input>
 		</view>
 		<view class="footer-right" @tap="sendMessge">
-			<view id='msg-type' >发送</view>
+			<view id='msg-type' >Gửi</view>
 		</view>
 	</view>
 </template>

@@ -7,7 +7,7 @@
 			</view>
 		</view>
 		<view class="search-main" v-if="keyword">
-			<view class="search-main-errtitle" v-if="hasNoData">无搜索结果</view>
+			<view class="search-main-errtitle" v-if="hasNoData">Không tìm thấy kết quả</view>
 			<view class="uni-list">
 				<view class="uni-list-cell" hover-class="none" v-for="(item,index) of list" @tap="handleClick(item.id)" :key="index">
 					<view class="uni-media-list">

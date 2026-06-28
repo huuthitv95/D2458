@@ -3,7 +3,7 @@
 		<view class="header" v-if="0">
 			<view class="input-view">
 				<uni-icon type="search" size="22" color="#666666"></uni-icon>
-				<input class="input" type="text" placeholder="输入搜索关键词" :disabled="true" />
+				<input class="input" type="text" placeholder="Nhập từ khóa tìm kiếm" :disabled="true" />
 			</view>
 		</view>
 		<view class="uni-list" v-if="list.length">
@@ -43,21 +43,21 @@
 					<view class="uni-media-list-logo action_icon">
 						<image :src="'../../static/theme/default/chat/chat.png'" :lazy-load="true"/>
 					</view>
-					<text class="action_item_text">发起群聊</text>
+					<text class="action_item_text">{{$t('chat.start_group') || '发起群聊'}}</text>
 				</view>
 				
 				<view class="action_item" @tap="goAction(1)">
 					<view class="uni-media-list-logo action_icon">
 						<image :src="'../../static/theme/default/chat/add_friend.png'" :lazy-load="true"/>
 					</view>
-					<text class="action_item_text">添加好友</text>
+					<text class="action_item_text">{{$t('chat.add_friend') || '添加好友'}}</text>
 				</view>
 				<!-- #ifdef APP-PLUS -->
 				<view class="action_item" @tap="goScanCode">
 					<view class="uni-media-list-logo action_icon">
 						<image :src="'../../static/theme/default/chat/scan_code.png'" :lazy-load="true"/>
 					</view>
-					<text class="action_item_text">扫一扫</text>
+					<text class="action_item_text">Quét mã</text>
 				</view>
 				<!-- #endif -->
 				
@@ -65,7 +65,7 @@
 					<view class="uni-media-list-logo action_icon">
 						<image :src="'../../static/theme/default/chat/in_out.png'" :lazy-load="true"/>
 					</view>
-					<text class="action_item_text">收付款</text>
+					<text class="action_item_text">Thu/chi tiền</text>
 				</view>
 			</view>
 		</view>
@@ -207,13 +207,13 @@
 			swipeData(no_reader_num){
 				return [
 					{
-						text: (no_reader_num ? '标为已读' : '标为未读'),
+						text: (no_reader_num ? 'Đánh dấu đã đọc' : 'Đánh dấu chưa đọc'),
 						style: {
 							
 						},
 					}, 
 					{
-						text: '删除',
+						text: 'Xóa',
 						style: {
 							backgroundColor: 'rgb(255,58,49)',
 						}

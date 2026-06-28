@@ -16,9 +16,9 @@
 				pdground="#000000"
 				:loadMake="true"
 				:showLoading="true"
-				loadingText="加载中..."
+				loadingText="Đang tải..."
 				@result="qrR" />
-				<text class="text_font">扫一扫上面群的二维码,申请进群</text>
+				<text class="text_font">Quét mã QR nhóm phía trên để xin vào nhóm</text>
 			</view>
 			
 		</view>

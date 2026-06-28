@@ -7,16 +7,16 @@
 		<view class="oper-wrapper" :style="{display: styleDisplay}">
 			<view class="oper">
 				<view class="btn-wrapper" v-if="showOper">
-					<view @click="fSelect"  hover-class="hover" :style="{width: btnWidth}"><text>重选</text></view>
-					<view @click="fClose"  hover-class="hover" :style="{width: btnWidth}"><text>关闭</text></view>
-					<view @click="fRotate"  hover-class="hover" :style="{width: btnWidth, display: btnDsp}"><text>旋转</text></view>
-					<view @click="fPreview" hover-class="hover" :style="{width: btnWidth}"><text>预览</text></view>
-					<view @click="fUpload"  hover-class="hover" :style="{width: btnWidth}"><text>上传</text></view>
+					<view @click="fSelect"  hover-class="hover" :style="{width: btnWidth}"><text>Chọn lại</text></view>
+					<view @click="fClose"  hover-class="hover" :style="{width: btnWidth}"><text>Đóng</text></view>
+					<view @click="fRotate"  hover-class="hover" :style="{width: btnWidth, display: btnDsp}"><text>Xoay</text></view>
+					<view @click="fPreview" hover-class="hover" :style="{width: btnWidth}"><text>Xem trước</text></view>
+					<view @click="fUpload"  hover-class="hover" :style="{width: btnWidth}"><text>Tải lên</text></view>
 				</view>
 				<view class="clr-wrapper" v-else>
 					<slider class="my-slider" @change="fColorChange"
 					block-size="25" value="0" min="-100" max="100" activeColor="red" backgroundColor="green" block-color="grey" show-value></slider>
-					<view @click="fPrvUpload"  hover-class="hover" :style="{width: btnWidth}"><text>上传</text></view>
+					<view @click="fPrvUpload"  hover-class="hover" :style="{width: btnWidth}"><text>Tải lên</text></view>
 				</view>
 			</view>
 		</view>

@@ -6,18 +6,18 @@
 				</view>
 			</view>
 			<view class="titleText">
-				<view class="hy">注册</view>
+				<view class="hy">Đăng ký</view>
 				<view class="xccp"></view>
 			</view>
 			<view class="login-card">
-				<!-- <view class="login-head">输入您的注册信息</view> -->
+				<!-- <view class="login-head">Nhập thông tin đăng ký</view> -->
 				
 				<label class="uni-list-cell uni-list-cell-pd" style="padding: 0;border-bottom: 1px #e7e6ef solid;margin-top: 60upx;">
 					<!-- <label class="label-2-text" >
 					   <text>帐号</text>
 					</label> -->
 					<view>
-						<input type="number" class="uni-input" placeholder="手机号码" v-model="form.username" />
+						<input type="number" class="uni-input" placeholder="Số điện thoại" v-model="form.username" />
 					</view>	
 					<view class="uni-icon uni-icon-clear" v-if="form.username" @click="delInputUsernameText"></view>
 					<view class="uni-icon" v-else ></view>
@@ -28,7 +28,7 @@
 					   <text>昵称</text>
 					</label> -->
 					<view>
-						<input type="text" class="uni-input" placeholder="昵称" v-model="form.nickname" />
+						<input type="text" class="uni-input" placeholder="Biệt danh" v-model="form.nickname" />
 					</view>	
 					<view class="uni-icon uni-icon-clear" v-if="form.nickname" @click="delInputNicknameText"></view>
 					<view class="uni-icon" v-else ></view>

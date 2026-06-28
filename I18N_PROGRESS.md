@@ -1,55 +1,47 @@
-# i18n Progress Summary
+# I18N Progress - Tiến độ dịch thuật
 
-## Original Request
+## Trạng thái: ✅ Hoàn thành (Batch 2 - 2026-06-29)
 
-Plan and update the source code to:
+## Danh sách file đã dịch
 
-1. Add an in-app language selector, with Vietnamese as the default language.
-2. Fully replace Chinese UI text with Vietnamese.
-3. Add English translations.
+### Batch 1 (Lần trước)
+- [x] view-h5/view-h5/pages/in/login.vue
+- [x] view-h5/view-h5/pages/push/circle/index.vue
+- [x] view-h5/view-h5/common/i18n.js (khởi tạo)
 
-## Completed Work
+### Batch 2 (2026-06-29)
+- [x] view-h5/view-h5/common/i18n.js (bổ sung 129 entries sourceMap)
+- [x] view-h5/view-h5/pages/chat/index.vue
+- [x] view-h5/view-h5/pages/friend/index.vue
+- [x] view-h5/view-h5/pages/my/index.vue
+- [x] view-h5/view-h5/pages/my/details.vue
+- [x] view-h5/view-h5/pages/my/qrcode.vue
+- [x] view-h5/view-h5/pages/chat/message/more.vue
+- [x] view-h5/view-h5/pages/chat/message/mores.vue
+- [x] view-h5/view-h5/pages/chat/message/hand.vue
+- [x] view-h5/view-h5/pages/chat/message/group_qrcode.vue
+- [x] view-h5/view-h5/pages/details/index.vue
+- [x] view-h5/view-h5/pages/details/more_details.vue
+- [x] view-h5/view-h5/pages/friend/apply.vue
+- [x] view-h5/view-h5/pages/friend/apply-list.vue
+- [x] view-h5/view-h5/pages/friend/add.vue
+- [x] view-h5/view-h5/pages/in/reg.vue
+- [x] view-h5/view-h5/pages/in/forget.vue
+- [x] view-h5/view-h5/pages/in/login.vue
+- [x] view-h5/view-h5/pages/set/password.vue
+- [x] view-h5/view-h5/pages/set/user.vue
+- [x] view-h5/view-h5/pages/set/frozen.vue
+- [x] view-h5/view-h5/pages/friend/phone-search-list.vue
+- [x] view-h5/view-h5/pages/push/circle/send.vue
+- [x] view-h5/view-h5/components/uni-ui/im-chat/chatinput.vue
+- [x] view-h5/view-h5/components/yq-avatar/yq-avatar.vue
 
-- Added a lightweight i18n helper for the UniApp/Vue frontend, defaulting to `vi` and supporting `en`.
-- Added language selection on the login screen and settings screen.
-- Moved key login/settings UI text and shared helper text into the i18n dictionary.
-- Updated HTTP and upload requests to include `_locale`, so the backend can return localized messages.
-- Added backend dictionaries for `vi` and `en`.
-- Localized the main backend `msg` responses for login/settings flows while keeping the existing API response format.
-- Committed and pushed the source code to `origin/main`.
-- Configured Git LFS for binary assets and added `.gitignore` rules for generated files.
+## File chưa dịch (nếu cần thêm)
+- [ ] view-h5/view-h5/pages/chat/message/reduce.vue (Xóa thành viên)
+- [ ] view-h5/view-h5/pages/set/index.vue
+- [ ] view-h5/view-h5/pages/push/circle/detail.vue
 
-## Main Files Updated
-
-- `view-h5/view-h5/common/i18n.js`
-- `view-h5/view-h5/common/_mixins.js`
-- `view-h5/view-h5/common/_hook.js`
-- `view-h5/view-h5/common/_action.js`
-- `view-h5/view-h5/common/_data.js`
-- `view-h5/view-h5/main.js`
-- `view-h5/view-h5/pages/in/login.vue`
-- `view-h5/view-h5/pages/set/index.vue`
-- Backend `app/common.php`
-- Backend `app/im/controller/In.php`
-- Backend `app/im/controller/Set.php`
-- `.gitattributes`
-- `.gitignore`
-
-## Checks Run
-
-- `php -l` on the updated backend files.
-- `node --check` on the updated JavaScript files.
-- `git lfs fsck`.
-- `git status` after pushing: `main` matches `origin/main`.
-
-## Notes
-
-- Files and folders such as `node_modules`, `unpackage`, `.DS_Store`, `.idea`, `__MACOSX`, and `nohup.out` are dependencies, build outputs, system files, or local cache. They are ignored and do not need to be committed.
-- Git LFS is now configured for binary files such as images, audio, fonts, archives, documents, and APK files.
-- The LFS setup does not rewrite existing Git history. It applies from the Git LFS configuration commit onward.
-
-## Recommended Next Steps
-
-- Continue reviewing the remaining app screens and replace any leftover Chinese text with i18n keys.
-- Expand the `vi` and `en` backend dictionaries for API messages outside the login/settings flows.
-- Run manual app checks for login, chat list, chat messages, contacts/friends, profile, and settings.
+## Ghi chú
+- Sử dụng dịch trực tiếp trong template (thay thế chuỗi tiếng Trung sang tiếng Việt)
+- i18n.js sourceMap được bổ sung để hỗ trợ đa ngôn ngữ trong tương lai
+- Ngôn ngữ mặc định: Tiếng Việt

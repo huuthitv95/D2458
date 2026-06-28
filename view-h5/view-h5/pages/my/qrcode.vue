@@ -29,9 +29,9 @@
 				pdground="#000000"
 				:loadMake="true"
 				:showLoading="true"
-				loadingText="加载中..."
+				loadingText="Đang tải..."
 				@result="qrR" />
-				<text class="text_font">扫一扫上面的二维码,加我为好友</text>
+				<text class="text_font">Quét mã QR phía trên, thêm tôi làm bạn bè</text>
 			</view>
 			
 		</view>

@@ -10,7 +10,7 @@
 						<view class="header" v-if="0">
 							<navigator :url="'phone-search'" hover-class="none" class="input-view">
 								<uni-icon type="search" size="22" color="#666666"></uni-icon>
-								<input class="input" type="text" placeholder="搜索我的朋友" :disabled="true" />
+								<input class="input" type="text" placeholder="Tìm bạn bè" :disabled="true" />
 							</navigator>
 						</view>
 						
@@ -23,7 +23,7 @@
 								
 							</view>
 							<view class="uni-media-list-body">
-								<view class="uni-list-cell-navigate">新的朋友</view>
+								<view class="uni-list-cell-navigate">Bạn mới</view>
 							</view>
 							<view v-if="new_friend_tips > 0">
 								<view class="red_num"><text>{{new_friend_tips}}</text></view>
@@ -37,7 +37,7 @@
 								
 							</view>
 							<view class="uni-media-list-body">
-								<view class="uni-list-cell-navigate">群聊</view>
+								<view class="uni-list-cell-navigate">Nhóm chat</view>
 							</view>
 							<view >
 								<view class=""><text></text></view>
@@ -51,7 +51,7 @@
 								
 							</view>
 							<view class="uni-media-list-body">
-								<view class="uni-list-cell-navigate">群认证</view>
+								<view class="uni-list-cell-navigate">Xác nhận nhóm</view>
 							</view>
 							<view v-if="new_group_tips > 0">
 								<view class="red_num"><text>{{new_group_tips}}</text></view>
@@ -59,13 +59,13 @@
 							</view>
 						</view>
 							
-						<uni-list-item title="标签"
+						<uni-list-item title="Nhãn"
 									   :show-arrow="false"
 									   thumb="../../static/theme/default/friend/label.png"
 									   @click="goPath('')"
 									   v-if="0"
 									   />
-						<uni-list-item title="小程序"
+						<uni-list-item title="Tiểu chương trình"
 									   :show-arrow="false"
 									   thumb="../../static/theme/default/friend/program.png"
 									   @click="goPath('')"
@@ -85,7 +85,7 @@
 						v-for="(item,index) in list.data" 
 						:key="isKey(key,index)"
 						>
-							<uni-swipe-action :options="[ {text: '备注'} ]" @tap="swipeAction(item.user_id + '')">
+							<uni-swipe-action :options="[ {text: 'Ghi chú'} ]" @tap="swipeAction(item.user_id + '')">
 								<view class="uni-media-list" @tap="goDetails(item.user_id + '')">
 									<view class="uni-media-list-logo">
 										<image :src="photo(item.photo+'')" :lazy-load="true" style="border-radius: 10upx;" />

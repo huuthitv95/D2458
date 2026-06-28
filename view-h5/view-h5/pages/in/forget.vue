@@ -10,7 +10,7 @@
 					   <text>邮　箱</text>
 					</label>
 					<view>
-						<input class="uni-input email" placeholder="输入您的电子邮箱" v-model="form.email" />
+						<input class="uni-input email" placeholder="Nhập địa chỉ email" v-model="form.email" />
 					</view>	
 					<view class="uni-icon uni-icon-clear" v-if="form.email" @click="delInputUEmailText"></view>
 					<view  class="uni-icon placeholdertext"></view>
@@ -20,10 +20,10 @@
 					   <text>验证码</text>
 					</label>
 					<view>
-						<input class="uni-input captch" placeholder="请输入验证码" v-model="form.captch" />
+						<input class="uni-input captch" placeholder="Nhập mã xác minh" v-model="form.captch" />
 					</view>	
 					<view class="uni-icon uni-icon-clear" v-if="form.captch" @click="delInputCaptchText"></view>
-					<view  class="uni-icon uni-active"><button class="captchtext">获取验证码</button></view>
+					<view  class="uni-icon uni-active"><button class="captchtext">Lấy mã xác minh</button></view>
 				</label>
 				<label class="uni-list-cell uni-list-cell-pd" >
 					<label class="label-2-text" >
