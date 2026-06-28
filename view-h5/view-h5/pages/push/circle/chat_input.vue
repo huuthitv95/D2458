@@ -22,7 +22,7 @@
 			
 		</view>
 		<view class="footer-right">
-			<view id='msg-type' class="send-comment" @tap="sendMessge">发送</view>
+			<view id='msg-type' class="send-comment" @tap="sendMessge">Gửi</view>
 		</view>
 	</view>
 </template>
@@ -49,7 +49,7 @@
 			
 		},
 		methods: {
-			blur: function() {//失焦触发通知父组件
+			blur: function() {// Mất focus - thông báo component cha
 				var that = this;
 				this.$emit('blur')
 			},
@@ -62,20 +62,20 @@
 					console.log(s);
 					that.inputValue += s;
 				}, function (e) {
-					console.log("语音识别失败：" + e.message);
+					console.log("Nhận dạng giọng nói thất bại: " + e.message);
 				});
 			},
 			sendMessge: function () {				
 				if (!this.inputValue) {
 					uni.showModal({
-						content:"还没有输入内容哦!",
-						showCancel:false
+						content: "Bạn chưa nhập nội dung!",
+						showCancel: false
 					})
 					return;
 				}
-				//点击发送按钮时，通知父组件用户输入的内容
+				// Khi nhấn Gửi, thông báo nội dung người dùng nhập lên component cha
 				this.$emit('send-message', this.inputValue);
-				this.inputValue = '';//清空上次输入的内容
+				this.inputValue = ''; // Xóa nội dung sau khi gửi
 			}
 		}
 	}
