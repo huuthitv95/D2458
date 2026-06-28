@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/static/lib/html5shiv.js"></script>
+    <script type="text/javascript" src="/static/lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/static/static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="/static/lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="/static/static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="/static/static/h-ui.admin/css/style.css" />
+      <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="/static/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>敏感词管理</title>
+    <style>
+        .page-container{padding: 100px;}
+        .words{padding: 10px 20px;background-color: #f8f8f8;display: inline-block;margin-right: 20px;position: relative;}
+        .words i{position: absolute;display: block;width: 13px;height: 13px;top: 10%;margin-top: -6px;right: 2px;font-size: 0;line-height: 0;cursor: pointer;background-image: url(/static/static/h-ui/images/acrossTab/acrossTab-close.png);background-repeat: no-repeat;background-position: 0 0;}
+        .add-wrap{margin-top: 50px;}
+        .add-input{width: 120px;vertical-align: middle;display: inline-block}
+        .add-btn{width: 60px;padding: 5px 0; border-radius: 10px;text-align: center;display: inline-block;vertical-align: middle;margin-left: 10px}
+    </style>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 对话管理 <span class="c-gray en">&gt;</span> 敏感词管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <div>
+    {volist name='badwords' id='c'}
+    <div class="words">{$c}<i onclick="del('{$c}')"></i></div>
+    {/volist}
+    </div>
+    <div class="add-wrap">
+    <input class="input-text add-input" type="text" id="words">
+    <div class="btn-success add-btn" onclick="add()">添加</div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/static/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript">
+    function del(words) {
+        $.ajax({
+            type:'post',
+            url:"{:url('/super/chatlist/delwords')}",
+            data:{words:words},
+            success:function (data) {
+                if (data == 1){
+                    window.location.reload();
+                }
+            }
+        });
+    }
+    function add() {
+        var words = $("#words").val()
+        console.log(words);
+        if (!words){
+            layer.alert('请输入敏感词!');
+            return;
+        }
+        $.ajax({
+            type:'post',
+            url:"{:url('/super/chatlist/addwords')}",
+            data:{words:words},
+            success:function (data) {
+                if (data == 1){
+                    window.location.reload();
+                }else{
+                    layer.alert(data);
+                }
+            }
+        });
+    }
+</script>
+</html>
