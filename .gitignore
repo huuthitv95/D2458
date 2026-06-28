@@ -1,0 +1,32 @@
+# OS and editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+
+# Local analysis and generated workspace artifacts
+.understand-anything/
+__MACOSX/
+
+# JavaScript/UniApp dependencies and build output
+node_modules/
+unpackage/
+dist/
+build/
+
+# PHP dependencies and runtime output
+vendor/
+runtime/
+*.log
+nohup.out
+
+# Environment and local config
+.env
+.env.*
+!.env.example
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
