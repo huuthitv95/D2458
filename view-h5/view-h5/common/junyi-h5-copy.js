@@ -1,7 +1,7 @@
 export default function h5Copy(content) {
   
   if (!document.queryCommandSupported('copy')) {
-    // 不支持
+    // Không hỗ trợ
     return false
   }
   
@@ -9,9 +9,9 @@ export default function h5Copy(content) {
   textarea.value = content
   textarea.readOnly = "readOnly"
   document.body.appendChild(textarea)
-  textarea.select() // 选择对象
-  textarea.setSelectionRange(0, content.length) //核心
-  let result = document.execCommand("copy") // 执行浏览器复制命令
+  textarea.select() // Chọn đối tượng
+  textarea.setSelectionRange(0, content.length) // Quan trọng
+  let result = document.execCommand("copy") // Thực thi lệnh sao chép của trình duyệt
   textarea.remove()
   return result
   

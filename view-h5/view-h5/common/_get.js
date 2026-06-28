@@ -3,7 +3,7 @@ import _action from './_action';
 import _data from './_data';
 
 export default {
-	/** 获得会话列表数据 */
+	/** Lấy dữ liệu danh sách hội thoại */
 	getChatList(){
 		_mixins.methods.$httpSend({
 			path: '/im/get/chatList',
@@ -15,20 +15,20 @@ export default {
 		});
 	},
    /**
-	 * 获得对话数据 
+	 * Lấy dữ liệu hội thoại 
 	 * @param {
-			发送的数据
+			Dữ liệu gửi đi
 			send_data: {
 				list_id: list_id,
 				time: 0,
-				是否更新未读消息数
+				Có cập nhật số tin nhắn chưa đọc không
 				is_up: 1,
 			},
-			回调函数
+			Hàm callback
 			calllback(data){
 				
 			},
-			是否需要操作本地缓存数据
+			Có cần thao tác dữ liệu cache cục bộ không
 			is_action_data: 1,
 		}
 	 */
@@ -50,7 +50,7 @@ export default {
 			}
 		});
 	},
-	/** 获得通讯录数据 */
+	/** Lấy dữ liệu danh bạ */
 	getFriendList(send_data,callback){
 		if(!send_data){
 			send_data = {};
@@ -69,7 +69,7 @@ export default {
 			}
 		});
 	},
-	/** 获得朋友圈数据 data要发送的数据 type 0加载最新数据 1加载历史数据 */
+	/** Lấy dữ liệu bảng tin: data=dữ liệu gửi, type=0 tải mới nhất, type=1 tải lịch sử */
 	getCircleList(send_data,callback){
 		_mixins.methods.$httpSend({
 			path: '/im/get/circleData',
@@ -94,7 +94,7 @@ export default {
 			}
 		});
 	},
-	/** 获得基础数据 */
+	/** Lấy dữ liệu cơ bản */
 	base(){
 		_mixins.methods.$httpSend({
 			path: '/im/get/base',
@@ -117,7 +117,7 @@ export default {
 			}
 		});
 	},
-	/** 获得好友申请列表数据 */
+	/** Lấy danh sách yêu cầu kết bạn */
 	getFriendApplyList(callback){
 		_mixins.methods.$httpSend({
 			path: '/im/get/applyFriend',
@@ -130,7 +130,7 @@ export default {
 			}
 		});
 	},
-	/** 获得群认证列表数据 */
+	/** Lấy danh sách xác nhận nhóm */
 	getGroupApplyList(callback){
 		_mixins.methods.$httpSend({
 			path: '/im/get/applyGroup',

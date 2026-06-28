@@ -2,9 +2,9 @@ import i18n from './i18n';
 
 export default {
 	/**
-	 * [设置获取globalData数据]
-	 * @param {Object} k 设置/获取的键
-	 * @param {Object} v 设置的值,没有传值就是获取这个键的值
+	 * [Đặt/lấy dữ liệu globalData]
+	 * @param {Object} k Khóa cần đặt/lấy
+	 * @param {Object} v Giá trị cần đặt, nếu không truyền thì là lấy giá trị của khóa
 	 * @return {String|Array|Object}
 	 */
 	data(k,v){
@@ -16,9 +16,9 @@ export default {
 		}
 	},
 	/**
-	 * [设置获取保存在本地的页面数据]
-	 * @param {Object} k 设置/获取的键
-	 * @param {Object} v 设置的值,v为undefined获取这个键的值,v为null,移除这个键的数据
+	 * [Đặt/lấy dữ liệu trang lưu cục bộ]
+	 * @param {Object} k Khóa cần đặt/lấy
+	 * @param {Object} v Giá trị cần đặt; v=undefined thì lấy giá trị; v=null thì xóa khóa
 	 * @return {String|Array|Object}
 	 */
 	localData(k,v){
@@ -30,7 +30,7 @@ export default {
 					key: k,
 					fail(){
 						uni.showModal({
-							content: i18n.t('删除本地数据失败'),
+							content: i18n.t('Xóa dữ liệu cục bộ thất bại'),
 						});
 					}
 				});
@@ -41,25 +41,25 @@ export default {
 					data: v,
 					fail(){
 						uni.showModal({
-							content: i18n.t('本地数据设置失败,请检测storage存储'),
+							content: i18n.t('Đặt dữ liệu cục bộ thất bại, vui lòng kiểm tra storage'),
 						});
 					}
 				});
 		}
 	},
-	/** 聊天静态文件地址 */
+	/** Địa chỉ file tĩnh chat */
 	staticChat(){
 		return getApp().globalData.static_url + '/static/chat/';
 	},
-	/** 朋友圈静态文件地址 */
+	/** Địa chỉ file tĩnh bảng tin */
 	staticCircle(){
 		return getApp().globalData.static_url + '/static/circle/';
 	},
-	/** 头像地址 */
+	/** Địa chỉ ảnh đại diện */
 	staticPhoto(){
 		return getApp().globalData.static_url + '/static/photo/';
 	},
-	/** 获取会话界面有多少未读消息 */
+	/** Lấy số tin nhắn chưa đọc trong giao diện hội thoại */
 	chatTipsNum(){
 		let num = 0,
 		chat_list = uni.getStorageSync('chat_list');

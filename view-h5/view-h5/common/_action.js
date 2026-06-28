@@ -3,14 +3,14 @@ import _mixins from './_mixins';
 import i18n from './i18n';
 
 export default {
-	/** 显示状态通知提醒 */
+	/** Hiển thị thông báo trạng thái */
 	setStatusTips(){
 		let pages = getCurrentPages();
 		if(pages.length < 1){
 			return;
 		}
 		let route = pages[pages.length - 1].route,
-		/** 只有tabbar页面才更新消息状态 */
+		/** Chỉ cập nhật trạng thái tin nhắn ở trang tabbar */
 		routes = [
 			'pages/chat/index',
 			'pages/friend/index',
@@ -20,7 +20,7 @@ export default {
 		if(routes.indexOf(route) == -1){
 			return;
 		}
-		/** 通讯录提示 */
+		/** Thông báo danh bạ */
 		let num = (_data.data('new_friend_tips_num') * 1),
 		num_ = (_data.data('new_group_tips_num') * 1);
 		if(num_){
@@ -37,7 +37,7 @@ export default {
 		} else {
 			uni.removeTabBarBadge({ index: 1 });
 		}
-		/** 会话列表提示 */
+		/** Thông báo danh sách hội thoại */
 		num = _data.chatTipsNum();
 		if(num){
 			uni.setTabBarBadge({
@@ -58,7 +58,7 @@ export default {
 			}
 		}
 
-		/** 朋友圈提示(优先显示消息条数，再提示好友动态) */
+		/** Thông báo bảng tin (ưu tiên hiển thị số tin nhắn, sau đó thông báo hoạt động bạn bè) */
 		num = _data.data('no_reader_circle_chat_num');
 		if(num){
 			uni.setTabBarBadge({
@@ -72,47 +72,47 @@ export default {
 			num = _data.data('no_reader_circle');
 			if(num){
 				uni.showTabBarRedDot({ index: 3 });
-				uni.$emit('data_circle_tips',i18n.t('好友动态'));
+				uni.$emit('data_circle_tips',i18n.t('Hoạt động bạn bè'));
 			}else{
 				uni.hideTabBarRedDot({ index: 3 });
 			}
 		}
 		
 	},
-	/** 路由守卫执行方法 */
+	/** Phương thức thực thi route guard */
 	routeTool() {
 		let token = _data.localData('token');
-		/** 没有token就跳转到登陆去获得token */
+		/** Chưa có token thì chuyển đến trang đăng nhập để lấy token */
 		if(!token){
 			uni.reLaunch({
 				url: '/pages/in/login'
 			});
 			return;
 		}
-		/** 如果没有连接上socket,则连接 */
+		/** Nếu chưa kết nối socket thì tiến hành kết nối */
 		if(!_data.data('socket_state')) {
 			_mixins.methods.$socketSend();
 		}
 	},
-	/** 验证失败后执行 */
+	/** Thực thi sau khi xác thực thất bại */
 	checkFail()
 	{
-		/** 断开 socket 连接 */
+		/** Ngắt kết nối socket */
 		uni.closeSocket();
 		
-		/** 设置 socket 状态为断线 */
+		/** Đặt trạng thái socket thành mất kết nối */
 		_data.data('socket_state',0);
-		/** 好友申请通知 */
+		/** Thông báo yêu cầu kết bạn */
 		_data.data('new_friend_tips_num',0);
-		/** 朋友圈通知 */
+		/** Thông báo bảng tin */
 		_data.data('no_reader_circle',0);
-		/** 朋友圈消息未读数 */
+		/** Số tin nhắn bảng tin chưa đọc */
 		_data.data('no_reader_circle_chat_num',0);
-		/** 清空自己的头像保存的本地的临时地址 */
+		/** Xóa địa chỉ tạm cục bộ của ảnh đại diện */
 		let data = _data.data('cache');
 		data.local_photo = '';
 		_data.data('cache',data);
-		/** 归档用户信息 */
+		/** Lưu trữ thông tin người dùng */
 		_data.data('user_info',{
 			id: 0,
 			nickname: '',
@@ -122,24 +122,24 @@ export default {
 			circle_img: 'default_circle_img.jpg',
 		});
 		
-		/** 清除缓存数据 */
+		/** Xóa dữ liệu cache */
 		let locale = i18n.getLocale();
 		uni.clearStorage();
 		i18n.setLocale(locale);
 		
-		/** 跳转到登陆界面 */
+		/** Chuyển đến giao diện đăng nhập */
 		uni.reLaunch({
 			url: '/pages/in/login'
 		});
 	},
-	/** 更新未读消息为0 */
+	/** Đặt tin nhắn chưa đọc về 0 */
 	updataNoReader(list_id){
 		_mixins.methods.$httpSend({
 			path: '/im/message/updataNoReader',
 			data: { list_id: list_id },
 		});
 	},
-	/** 下载自己的头像 */
+	/** Tải về ảnh đại diện của mình */
 	downloadPhoto(){
 		uni.downloadFile({
 			url: _data.staticPhoto() + _data.data('user_info').photo,
@@ -152,48 +152,48 @@ export default {
 			}
 		});
 	},
-	/** 播放音效 */
+	/** Phát âm thanh */
 	playVoice(path){
 		let innerAudioContext = uni.createInnerAudioContext();
 		innerAudioContext.src = path;
 	//	innerAudioContext.obeyMuteSwitch = false;
 		innerAudioContext.play();
 		innerAudioContext.onPlay(() => {
-		  console.log(i18n.t('开始播放'));
+		  console.log(i18n.t('Bắt đầu phát'));
 		});
 		innerAudioContext.onError((res) => {
 			innerAudioContext.destroy();
 			return;
 			uni.showToast({
-				title: i18n.t('音效播放错误 ->') + JSON.stringify(res),
+				title: i18n.t('Lỗi phát âm thanh ->') + JSON.stringify(res),
 				icon: 'none',
 			});
 		});
 	},
-	/** 时间戳转换 */
+	/** Chuyển đổi timestamp */
 	timestampFormat( timestamp ) {
-		let curTimestamp = parseInt(new Date().getTime() / 1000), //当前时间戳
-		timestampDiff = curTimestamp - timestamp, // 参数时间戳与当前时间戳相差秒数
-		curDate = new Date( curTimestamp * 1000 ), // 当前时间日期对象
-		tmDate = new Date( timestamp * 1000 ),  // 参数时间戳转换成的日期对象
+		let curTimestamp = parseInt(new Date().getTime() / 1000), // timestamp hiện tại
+		timestampDiff = curTimestamp - timestamp, // số giây chênh lệch với timestamp hiện tại
+		curDate = new Date( curTimestamp * 1000 ), // đối tượng ngày giờ hiện tại
+		tmDate = new Date( timestamp * 1000 ),  // đối tượng ngày giờ từ timestamp tham số
 		Y = tmDate.getFullYear(), 
 		m = tmDate.getMonth() + 1, d = tmDate.getDate(),
 		H = tmDate.getHours(), i = tmDate.getMinutes(), 
 		s = tmDate.getSeconds();
-		if ( timestampDiff < 60 ) { // 一分钟以内
-			return i18n.t('刚刚');
-		} else if( timestampDiff < 3600 ) { // 一小时前之内
-			return Math.floor( timestampDiff / 60 ) + i18n.t('分钟前');
+		if ( timestampDiff < 60 ) { // trong vòng 1 phút
+			return i18n.t('Vừa xong');
+		} else if( timestampDiff < 3600 ) { // trong vòng 1 giờ
+			return Math.floor( timestampDiff / 60 ) + i18n.t(' phút trước');
 		} else if ( curDate.getFullYear() == Y && curDate.getMonth()+1 == m && curDate.getDate() == d ) {
-			return i18n.t('今天') + ' ' + ((String(H).length == 1 ? '0' : '') + H) + ':' + ((String(i).length == 1 ? '0' : '') + i);
+			return i18n.t('Hôm nay') + ' ' + ((String(H).length == 1 ? '0' : '') + H) + ':' + ((String(i).length == 1 ? '0' : '') + i);
 		} else {
-			var newDate = new Date( (curTimestamp - 86400) * 1000 ); // 参数中的时间戳加一天转换成的日期对象
+			var newDate = new Date( (curTimestamp - 86400) * 1000 ); // đối tượng ngày giờ từ timestamp tham số + 1 ngày
 			if ( newDate.getFullYear() == Y && newDate.getMonth()+1 == m && newDate.getDate() == d ) {
-				return i18n.t('昨天') + ' ' + ((String(H).length == 1 ? '0' : '') + H) + ':' + ((String(i).length == 1 ? '0' : '') + i);
+				return i18n.t('Hôm qua') + ' ' + ((String(H).length == 1 ? '0' : '') + H) + ':' + ((String(i).length == 1 ? '0' : '') + i);
 			} else if ( curDate.getFullYear() == Y ) {
-				return  ((String(m).length == 1 ? '0' : '') + m) + i18n.t('月') + ((String(d).length == 1 ? '0' : '') + d) + i18n.t('日') + ' ' + ((String(H).length == 1 ? '0' : '') + H) + ':' + ((String(i).length == 1 ? '0' : '') + i);
+				return  ((String(m).length == 1 ? '0' : '') + m) + i18n.t('/') + ((String(d).length == 1 ? '0' : '') + d) + i18n.t(' ') + ' ' + ((String(H).length == 1 ? '0' : '') + H) + ':' + ((String(i).length == 1 ? '0' : '') + i);
 			} else {
-				return  Y + i18n.t('年') + ((String(m).length == 1 ? '0' : '') + m) + i18n.t('月') + ((String(d).length == 1 ? '0' : '') + d) + i18n.t('日') + ' ' + ((String(H).length == 1 ? '0' : '') + H) + ':' + ((String(i).length == 1 ? '0' : '') + i);
+				return  Y + i18n.t('/') + ((String(m).length == 1 ? '0' : '') + m) + i18n.t('/') + ((String(d).length == 1 ? '0' : '') + d) + i18n.t(' ') + ' ' + ((String(H).length == 1 ? '0' : '') + H) + ':' + ((String(i).length == 1 ? '0' : '') + i);
 			}
 		}
 	},

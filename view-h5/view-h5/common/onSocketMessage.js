@@ -3,62 +3,62 @@ import _get from './_get';
 import _action from './_action';
 import h5Copy from './junyi-h5-copy.js'
 export default {
-	/** 验证token */
+	/** Xác thực token */
 	checkToken(res) {
 		if(res.err){
 			_action.checkFail();
 		} else {
-			/** 设置为登陆状态 */
+			/** Đặt trạng thái đăng nhập */
 			store.commit('set',{ k:'socket_state',v:1 });
-			/** 获取基础数据 */
+			/** Lấy dữ liệu cơ bản */
 			_get.base();
 		}
 	},
-	/** 下线 */
+	/** Đăng xuất */
 	offline(res){
 		uni.showModal({
-			content: '你的账号在另一客户端登陆，如果不是你本人操作，请修改你的密码',
+			content: 'Tài khoản của bạn đã đăng nhập từ thiết bị khác. Nếu không phải bạn, hãy đổi mật khẩu ngay!',
 			success(){
 				_action.checkFail();
 			},
 		});
 	},
-	/** 获得会话列表 */
+	/** Lấy danh sách hội thoại */
 	getChatList(){
 		_get.getChatList();
 	},
-	/** 获得好友列表 */
+	/** Lấy danh sách bạn bè */
 	getFriendList(){
 		_get.getFriendList({ up: 1});
 	},
 	
 	copy() {
-	     let content = '复制消息' // 复制内容，必须字符串，数字需要转换为字符串
+	     let content = 'Sao chép tin nhắn' // nội dung sao chép, phải là chuỗi, số cần chuyển sang chuỗi
 	     const result = h5Copy(content)
 	       if (result === false) {
 	         uni.showToast({
-	           title:'不支持',
+	           title:'Không hỗ trợ',
 	         })
 	       } else {
 	         uni.showToast({
-	           title:'复制成功',
+	           title:'Sao chép thành công',
 	           icon:'none'
 	         })
 	       }
 		  },
-	/** 新好友提醒 */
+	/** Thông báo bạn bè mới */
 	newFriend(data){
 		_action.playVoice('/static/voice/friend.mp3');
 		let num = store.state.new_friend_tips_num + (data.num * 1);
 		store.commit('set',{ k:'new_friend_tips_num',v:num });
 		_action.setStatusTips();
 	},
-	/** 接收新消息 */
+	/** Nhận tin nhắn mới */
 	chatData(data){
 		let chat_data = store.state.page_data.chat_data,
 		msg_reader_num = 1;
 		if(chat_data[data.list_id]){
-			// 如果在与对方的对话界面，更新这个对话的阅读(即反馈接收状态)
+			// Nếu đang trong hội thoại với đối phương, cập nhật trạng thái đã đọc
 			if(store.state.page_data.message_query_list_id == data.list_id && store.state.user_info.id != data.data.msg.user_info.uid){
 				_action.updataNoReader(data.list_id);
 				msg_reader_num = 0;
@@ -66,7 +66,7 @@ export default {
 			store.state.page_data.chat_data[data.list_id].list.push(data.data);
 		}
 		
-		/** 更新对话列表数据 */		
+		/** Cập nhật dữ liệu danh sách hội thoại */		
 		for(let i = 0,j = store.state.page_data.chat_list.length;i < j;i ++){
 			if(store.state.page_data.chat_list[i].list_id == data.list_id){
 				let last_msg;
@@ -75,28 +75,28 @@ export default {
 						last_msg = data.data.msg.content.text;
 						break;
 					case 1:
-						/** 语音 */
-						last_msg = '[语音]';
+						/** Giọng nói */
+						last_msg = '[Giọng nói]';
 						break;
 					case 2:
-						/** 图片 */
-						last_msg = '[图片]';
+						/** Hình ảnh */
+						last_msg = '[Hình ảnh]';
 						break;
 					case 3:
-						/** 视频 */
-						last_msg = '[视频]';
+						/** Video */
+						last_msg = '[Video]';
 						break;
 					case 4:
-						/** 文件 */
-						last_msg = '[文件]';
+						/** Tệp */
+						last_msg = '[Tệp]';
 						break;
 					case 5:
-						/** 红包 */
-						last_msg = '[红包]';
+						/** Lì xì */
+						last_msg = '[Lì xì]';
 						break;
 					default:
-						/** 未知消息类型 */
-						last_msg = '[未知]';
+						/** Loại tin nhắn không xác định */
+						last_msg = '[Không xác định]';
 						break;
 				}
 				store.state.page_data.chat_list[i].last_msg = last_msg;
@@ -109,19 +109,19 @@ export default {
 			}
 		}
 		
-		/** 如果不是自己的消息，震动提示 */
+		/** Nếu không phải tin nhắn của mình thì rung */
 		if(store.state.user_info.id != data.data.msg.user_info.uid){
 			uni.vibrateLong();
 			_action.playVoice('/static/voice/chat.mp3');
 		}
 	},
-	/** 接收好友朋友圈动态提示 */
+	/** Nhận thông báo hoạt động bảng tin của bạn bè */
 	circleTips(data){
 		_action.playVoice('/static/voice/circle.mp3');
 		store.commit('set',{ k:'no_reader_circle',v:1 });
 		_action.setStatusTips();
 	},
-	/** 接收朋友圈好友回复/赞通知 */
+	/** Nhận thông báo bình luận/thích bảng tin từ bạn bè */
 	cricleChatTips(data){
 		_action.playVoice('/static/voice/circle.mp3');
 		let num = store.state.no_reader_circle_chat_num;
@@ -129,7 +129,7 @@ export default {
 		store.commit('set',{ k:'no_reader_circle_chat_num',v:num });
 		_action.setStatusTips();
 	},
-	/** 撤回消息 */
+	/** Thu hồi tin nhắn */
 	deleteChat(data){
 		let chat_data = store.state.page_data.chat_data;
 		if(chat_data[data.list_id] && chat_data[data.list_id].list.length){

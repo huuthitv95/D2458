@@ -7,31 +7,31 @@
 	export default {
 		globalData: {
 			agent_id: 0,
-			/** http 服务端地址 */
+			/** Địa chỉ HTTP server */
 			http_url: 'https://demo1.guaiwola.com',
-			/** 静态文件存放地址 */
+			/** Địa chỉ lưu file tĩnh */
 			static_url: 'https://demo1.guaiwola.com',
-			/** socket 服务端地址 */
+			/** Địa chỉ socket server */
 			socket_url: 'wss://api-api.guaiwola.com',
 			
 			
-			/** socket 连接状态 */
+			/** Trạng thái kết nối socket */
 			socket_state: 0,
-			/** 好友申请通知 */
+			/** Thông báo yêu cầu kết bạn */
 			new_friend_tips_num: 0,
-			/** 群认证通知 */
+			/** Thông báo xác nhận nhóm */
 			new_group_tips_num: 0,
-			/** 朋友圈通知 */
+			/** Thông báo bảng tin */
 			no_reader_circle: 0,
-			/** 朋友圈消息未读数 */
+			/** Số tin nhắn bảng tin chưa đọc */
 			
 			no_reader_circle_chat_num: 0,
-			/** 缓存的数据 */
+			/** Dữ liệu cache */
 			cache: {
-				/** 个人头像缓存数据 */
+				/** Dữ liệu cache ảnh đại diện cá nhân */
 				local_photo: '',
 			},
-			/** 用户信息 */
+			/** Thông tin người dùng */
 			user_info: {
 				id: 0,
 				nickname: '',
@@ -45,10 +45,10 @@
 			
 			// #ifdef APP-PLUS
 			
-			/** 锁定屏幕方向 */
+			/** Khóa hướng màn hình */
 			plus.screen.lockOrientation('portrait-primary');
 			
-			/** 检测升级 */
+			/** Kiểm tra cập nhật */
 			let _this = this;
 			
 			plus.runtime.getProperty(plus.runtime.appid, function(info) {
@@ -61,7 +61,7 @@
 					success(res){
 						if(res.status) {
 							_action.checkFail();
-							let wgtWaiting = plus.nativeUI.showWaiting("更新开始下载"),
+							let wgtWaiting = plus.nativeUI.showWaiting("Bắt đầu tải xuống bản cập nhật"),
 							update_url = (plus.os.name == 'Android' ? res.update_url.android : res.update_url.ios),
 							downloadTask = uni.downloadFile({
 							    url: update_url,
@@ -85,7 +85,7 @@
 							    }
 							});
 							downloadTask.onProgressUpdate((res) => {
-								wgtWaiting.setTitle('下载中...' + res.progress + '%');
+								wgtWaiting.setTitle('Đang tải... ' + res.progress + '%');
 							});
 						}
 					},
@@ -101,27 +101,27 @@
 			}
 			setTimeout(() => {
 			   /**
-				* 每次app启动都加载最新的会话列表数据，只要是最新的会话列表数据，会话界面数据也会是最新的
-				* 这里延时100ms,不然会全局变量没有加载完成，会报错。
+				* Mỗi lần app khởi động đều tải danh sách hội thoại mới nhất; danh sách hội thoại mới nhất sẽ đảm bảo giao diện hội thoại luôn cập nhật
+				* Delay 100ms ở đây, nếu không biến toàn cục chưa load xong sẽ báo lỗi.
 				*/
 				_get.getChatList();
 			},100);
 			
-			//连接成功一分钟后开始心跳检测，如果超过40秒没有收到服务器的心跳包，就重新连接socket
+			// Bắt đầu kiểm tra heartbeat sau 1 phút kết nối thành công; nếu quá 40 giây không nhận heartbeat từ server thì kết nối lại socket
 			setTimeout(function(){
 				setInterval(function(){
 					const time = Date.parse(new Date())/1000
 					const socket_heartbeat = parseInt(_data.localData('socket_heartbeat'))
 					if(socket_heartbeat && (time - socket_heartbeat) > 40){
 						console.log('no_socket_heartbeat')
-						/** 断开重新再连接，再获取最新数据 */
+						/** Ngắt kết nối và kết nối lại, sau đó lấy dữ liệu mới nhất */
 						_data.data('socket_state',0);
 						uni.closeSocket();
 						_this.$socketSend();
 						_get.getChatList();
 					} else {
 						if(_data.localData('token')){
-							// 判断当前用户是否绑定clientID
+							// Kiểm tra người dùng hiện tại đã liên kết clientID chưa
 							_this.$httpSend({
 								path: '/im/message/checkUid',
 								data: {
@@ -132,7 +132,7 @@
 									const clientID = res.data.client_id
 									console.log(clientID)
 									if (clientID.length == 0){
-										/** 断开重新再连接，再获取最新数据 */
+										/** Ngắt kết nối và kết nối lại, sau đó lấy dữ liệu mới nhất */
 										_data.data('socket_state',0);
 										uni.closeSocket();
 										_this.$socketSend();
@@ -150,13 +150,13 @@
 			
 			/**
 			 * @param {Object} res
-			 * 监听网络变化
-			 * 如果有网络变化，断开socket，再重新连接
-			 * 重新获取会话列表数据
-			 * 如果是在会话界面，再重新获取这个的对话数据
+			 * Lắng nghe thay đổi mạng
+			 * Nếu mạng thay đổi, ngắt socket rồi kết nối lại
+			 * Lấy lại dữ liệu danh sách hội thoại
+			 * Nếu đang ở giao diện hội thoại thì lấy lại dữ liệu hội thoại đó
 			 */
 			uni.onNetworkStatusChange(function (res) {
-				/** 断开重新再连接，再获取最新数据 */
+				/** Ngắt kết nối và kết nối lại, sau đó lấy dữ liệu mới nhất */
 				_data.data('socket_state',0);
 				uni.closeSocket();
 				_this.$socketSend();
@@ -183,13 +183,13 @@
 <style>
 	
 	/* #ifndef APP-PLUS-NVUE */
-	/** uni.css - 通用组件、模板样式库，可以当作一套ui库应用 */
+	/** uni.css - Thư viện style component và template chung, có thể dùng như một UI library */
 	@import './static/css/uni.css';
-	/** 设置 body 的背景色 */
+	/** Đặt màu nền cho body */
 	page {
 		background-color: #F4F5F6;
 	}
-	/** 导航栏自定义图标样式调整 */
+	/** Điều chỉnh style icon tùy chỉnh thanh điều hướng */
 	.uni-page-head .uni-btn-icon {
 		min-width: auto !important;
 		overflow: inherit !important;
