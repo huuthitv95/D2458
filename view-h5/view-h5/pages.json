@@ -3,7 +3,7 @@
 		{
 			"path": "pages/chat/index",
 			"style": {
-				"navigationBarTitleText": "会话",
+				"navigationBarTitleText": "Hội thoại",
 				"enablePullDownRefresh": true,
 				"app-plus": {
 					"titleNView": {
@@ -39,7 +39,7 @@
 		{ 
 			"path" : "pages/chat/message/group_qrcode",
 			"style" : { 
-				"navigationBarTitleText" : "群二维码" 
+				"navigationBarTitleText" : "Mã QR nhóm" 
 			} 
 		},
 		{
@@ -47,7 +47,7 @@
 		    "style" : {
 				"navigationBarBackgroundColor":"#cf3c35",
 				"navigationBarTextStyle":"white",
-				"navigationBarTitleText":"红包",
+				"navigationBarTitleText":"Lì xì",
 				"backgroundColorTop":"#cf3c35",
 				"backgroundColorBottom":"#fff"
 			}
@@ -55,7 +55,7 @@
 		{
 		    "path" : "pages/chat/message/reduce",
 		    "style" : {
-					"navigationBarTitleText" : "移除群成员",
+					"navigationBarTitleText" : "Xóa thành viên nhóm",
 					"app-plus": {
 						"titleNView": {
 							"buttons": [
@@ -75,7 +75,7 @@
 		    "style" : {
 		    	"navigationBarBackgroundColor":"#cf3c35",
 		    	"navigationBarTextStyle":"white",
-		    	"navigationBarTitleText":"发红包",
+		    	"navigationBarTitleText":"Gửi lì xì",
 		    	"backgroundColorTop":"#cf3c35",
 		    	"backgroundColorBottom":"#fff",
 				"app-plus":{
@@ -87,7 +87,7 @@
 		{
 			"path": "pages/friend/index",
 			"style": {
-				"navigationBarTitleText": "通讯录",
+				"navigationBarTitleText": "Danh bạ",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -109,7 +109,7 @@
 		{
 			"path": "pages/friend/index_list",
 			"style": {
-				"navigationBarTitleText": "选择联系人",
+				"navigationBarTitleText": "Chọn liên hệ",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -127,43 +127,43 @@
 		{ 
 			"path" : "pages/friend/phone-search",
 			"style" : { 
-				"navigationBarTitleText" : "搜索联系人" 
+				"navigationBarTitleText" : "Tìm kiếm liên hệ" 
 			} 
 		},
 		{ 
 			"path" : "pages/friend/apply-list",
 			"style" : { 
-				"navigationBarTitleText" : "新的朋友" 
+				"navigationBarTitleText" : "Bạn bè mới" 
 			} 
 		},
 		{ 
 			"path" : "pages/friend/chat-group-apply",
 			"style" : { 
-				"navigationBarTitleText" : "群认证消息" 
+				"navigationBarTitleText" : "Tin nhắn xác nhận nhóm" 
 			} 
 		},
 		{ 
 			"path" : "pages/friend/group_chat",
 			"style" : { 
-				"navigationBarTitleText" : "我的群聊" 
+				"navigationBarTitleText" : "Nhóm chat của tôi" 
 			} 
 		},
 		{ 
 			"path" : "pages/friend/add",
 			"style" : { 
-				"navigationBarTitleText" : "添加好友" 
+				"navigationBarTitleText" : "Thêm bạn bè" 
 			} 
 		},
 		{ 
 			"path" : "pages/friend/apply",
 			"style" : { 
-				"navigationBarTitleText" : "朋友验证" 
+				"navigationBarTitleText" : "Xác nhận kết bạn" 
 			} 
 		},
 		{ 
 			"path" : "pages/friend/remarks",
 			"style" : { 
-				"navigationBarTitleText" : "设置备注",
+				"navigationBarTitleText" : "Đặt biệt danh",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -181,13 +181,13 @@
 		{
 			"path": "pages/push/index",
 			"style": {
-				"navigationBarTitleText": "发现"
+				"navigationBarTitleText": "Khám phá"
 			}
 		},
 		{
 			"path": "pages/push/circle",
 			"style": {
-				"navigationBarTitleText": "朋友圈",
+				"navigationBarTitleText": "Bảng tin",
 				"app-plus": {
 					"softinputMode": "adjustResize",
 					"titleNView": {
@@ -222,7 +222,7 @@
 		{
 			"path": "pages/push/circle_chat_details",
 			"style": {
-				"navigationBarTitleText": "我的消息",
+				"navigationBarTitleText": "Tin nhắn của tôi",
 				"app-plus": {
 					"softinputMode": "adjustResize",
 					"titleNView": {
@@ -248,13 +248,13 @@
 		{
 		    "path" : "pages/my/details",
 		    "style" : {
-				"navigationBarTitleText" : "个人信息"
+				"navigationBarTitleText" : "Thông tin cá nhân"
 			}
 		},
 		{
 		    "path" : "pages/my/qrcode",
 		    "style" : {
-				"navigationBarTitleText" : "我的二维码"
+				"navigationBarTitleText" : "Mã QR của tôi"
 			}
 		},
 		{
@@ -314,13 +314,13 @@
 		{
 		    "path" : "pages/details/more_details",
 		    "style" : {
-				"navigationBarTitleText" : "资料设置"
+				"navigationBarTitleText" : "Cài đặt hồ sơ"
 			}
 		},
 		{
 			"path": "pages/in/login",
 			"style": {
-				"navigationBarTitleText": "登 录",
+				"navigationBarTitleText": "Đăng nhập",
 				"app-plus": {
 					"titleNView": {}
 				},
@@ -332,7 +332,7 @@
 		{
 			"path": "pages/in/reg",
 			"style": {
-				"navigationBarTitleText": "注册",
+				"navigationBarTitleText": "Đăng ký",
 				"app-plus": {
 					"titleNView": {}
 				},
@@ -343,13 +343,13 @@
 		{
 		    "path" : "pages/set/frozen",
 		    "style" : {
-				"navigationBarTitleText" : "冻结帐号"
+				"navigationBarTitleText" : "Tài khoản bị khóa"
 			}
 		},
 		{
 			"path": "pages/in/forget",
 			"style": {
-				"navigationBarTitleText": "密码找回",
+				"navigationBarTitleText": "Khôi phục mật khẩu",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -361,7 +361,7 @@
 		{
 		    "path" : "pages/push/circle/send",
 		    "style" : {
-				"navigationBarTitleText" : "发布我的动态",
+				"navigationBarTitleText" : "Đăng bài của tôi",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -379,7 +379,7 @@
 		{
 		    "path" : "pages/push/game_list",
 		    "style" : {
-				"navigationBarTitleText" : "发现",
+				"navigationBarTitleText" : "Khám phá",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -393,7 +393,7 @@
 		{
 		    "path" : "pages/push/game",
 		    "style" : {
-				"navigationBarTitleText" : "官网",
+				"navigationBarTitleText" : "Trang chủ",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -505,19 +505,19 @@
 		{
 		    "path" : "pages/set/index",
 		    "style" : {
-				"navigationBarTitleText" : "设置"
+				"navigationBarTitleText" : "Cài đặt"
 			}
 		},
 		{
 		    "path" : "pages/chat/message/more",
 		    "style" : {
-				"navigationBarTitleText" : "聊天信息"
+				"navigationBarTitleText" : "Thông tin trò chuyện"
 			}
 		},
 		{
 		    "path" : "pages/set/user",
 		    "style" : {
-				"navigationBarTitleText" : "基本资料设置",
+				"navigationBarTitleText" : "Cài đặt thông tin cơ bản",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -535,13 +535,13 @@
 		{
 		    "path" : "pages/set/photo",
 		    "style" : {
-				"navigationBarTitleText" : "个人头像"
+				"navigationBarTitleText" : "Ảnh đại diện cá nhân"
 			}
 		},
 		{
 		    "path" : "pages/set/group_photo",
 		    "style" : {
-				"navigationBarTitleText" : "群聊头像"
+				"navigationBarTitleText" : "Ảnh đại diện nhóm"
 			}
 		},
 		{
@@ -565,7 +565,7 @@
 		{
 		    "path" : "pages/set/password",
 		    "style" : {
-				"navigationBarTitleText" : "密码修改",
+				"navigationBarTitleText" : "Đổi mật khẩu",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -583,7 +583,7 @@
 		{
 		    "path" : "pages/set/group_admin",
 		    "style" : {
-				"navigationBarTitleText" : "设置群管理员",
+				"navigationBarTitleText" : "Đặt quản trị viên nhóm",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [
@@ -615,25 +615,25 @@
 				"pagePath": "pages/chat/index",
 				"iconPath": "static/theme/default/tabBar/1_0.png",
 				"selectedIconPath": "static/theme/default/tabBar/1_1.png",
-				"text": "会话"
+				"text": "Hội thoại"
 			},
 			{
 				"pagePath": "pages/friend/index",
 				"iconPath": "static/theme/default/tabBar/2_0.png",
 				"selectedIconPath": "static/theme/default/tabBar/2_1.png",
-				"text": "通讯录"
+				"text": "Danh bạ"
 			},
 			{
 				"pagePath": "pages/push/index",
 				"iconPath": "static/theme/default/tabBar/5_1.png",
 				"selectedIconPath": "static/theme/default/tabBar/5_0.png",
-				"text": "主页"
+				"text": "Trang chủ"
 			},
 			{
 				"pagePath": "pages/my/index",
 				"iconPath": "static/theme/default/tabBar/4_0.png",
 				"selectedIconPath": "static/theme/default/tabBar/4_1.png",
-				"text": "我的"
+				"text": "Của tôi"
 			}
 
 
