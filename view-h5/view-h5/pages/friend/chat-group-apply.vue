@@ -15,10 +15,10 @@
 					<view style="position: relative;">
 						<block v-if="value.status == 0">
 							<view class="badge-text" 
-							style="background-color:#09BB07;color:#FFFFFF;position:absolute;top: 20upx;right: 0;width:50upx;text-align: center;"
+							style="background-color:#09BB07;color:#FFFFFF;position:absolute;top: 20upx;right: 0;width:80upx;text-align: center;"
 							@tap="groupAdd(value.id + '')"
 							>
-								<text>接受</text>
+								<text>{{$t('friend.accept')}}</text>
 							</view>
 						</block>
 						<block v-else>
@@ -45,6 +45,7 @@
 	import _get from '../../common/_get';
 	import _hook from '../../common/_hook';
 	import _data from '../../common/_data';
+	import i18n from '../../common/i18n';
 	
 	export default {
 		components: {
@@ -64,12 +65,12 @@
 			let friend_apply_list = _data.localData('group_apply_list'),
 				_this = this;
 				
-			/** 监听最新数据 */
+			/** Lắng nghe dữ liệu mới nhất */
 			uni.$on('data_group_apply_data',function(data){
 				_this.friend_apply_list = data;
 			});
 
-			/** 加载本地缓存数据,如果有新的朋友申请,更新本地数据 */
+			/** Tải cache cục bộ, nếu có yêu cầu mới thì cập nhật */
 			if(friend_apply_list && _this.action == 0){
 				_this.friend_apply_list = friend_apply_list;
 			}else{
@@ -92,6 +93,7 @@
 			},
 		},
 		methods: {
+			$t(key) { return i18n.t(key); },
 			groupAdd(id){
 				let _this = this;
 				if(id){

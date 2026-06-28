@@ -4,7 +4,7 @@
 		<scroll-view class="scrollList" scroll-y :scroll-into-view="scrollViewId" :style="{height:winHeight + 'px'}">
 			
 			<view class="uni-list">
-		
+	
 					<block v-for="(list, key) in list_data" :key="key">
 						<view class="uni-list-cell-divider" :id="list.letter">
 							{{list.letter}}
@@ -71,6 +71,7 @@
 	import _get from '../../common/_get';
 	import _hook from '../../common/_hook';
 	import _data from '../../common/_data';
+	import i18n from '../../common/i18n';
 	
 	export default {
 		components: {
@@ -102,7 +103,7 @@
 			send_data = { list_id: option.list_id,friend: 0 };
 			_this.list_id = option.list_id;
 			
-			/** 这里初始化好友列表 */
+			/** Khởi tạo danh sách bạn bè */
 			if(!friend_list){
 				send_data.friend = 1;
 			}
@@ -129,6 +130,7 @@
 			},
 		},
 		methods: {
+			$t(key) { return i18n.t(key); },
 			change(user_id){
 				if(user_id){
 					let i = this.add_user_ids.indexOf(user_id);
@@ -163,11 +165,9 @@
 			},
 			touchEnd() {
 				this.touchmove = false;
-				//this.touchmoveIndex = -1;
 			},
 			touchCancel() {
 				this.touchmove = false;
-				//this.touchmoveIndex = -1;
 			},
 		},
 		watch: {
@@ -206,7 +206,7 @@
 					});
 				}else{
 					uni.showToast({
-						title: '未创建',
+						title: _this.$t('friend.not_created'),
 					});
 					setTimeout(() => {
 						uni.switchTab({
@@ -240,7 +240,6 @@
 	}
 
 	.uni-indexed-list-bar.active {
-		/* background-color: rgb(200, 200, 200); */
 	}
 
 	.uni-indexed-list-text {

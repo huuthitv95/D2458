@@ -1,6 +1,6 @@
 <template>
     <view>
-        <view class="uni-title uni-common-pl">设置朋友的备注</view>
+        <view class="uni-title uni-common-pl">{{$t('friend.set_remark_title')}}</view>
         <view class="uni-textarea">
             <textarea auto-height v-model="content" :maxlength="20"/>
         </view>
@@ -11,6 +11,7 @@
 	
 	import _get from '../../common/_get';
 	import _hook from '../../common/_hook';
+	import i18n from '../../common/i18n';
 	
 	export default {
 		components:{
@@ -41,11 +42,12 @@
 			
 		},
 		methods:{
+			$t(key) { return i18n.t(key); },
 			send(){
 				let _this = this;
 				if(_this.content == ''){
 					uni.showToast({
-						title: '备注不能为空',
+						title: _this.$t('friend.remark_empty'),
 						icon: 'none',
 					});
 					return;
